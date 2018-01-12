@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@+id/iinicio"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/iaconctacto"
+        android:title="Agregar Contacto" />
+    <item
+        android:id="@+id/icontacto"
+        android:title="Ver Contactos" />
+
+    <item
+        android:id="@+id/imisdatos"
+        android:title="Mis Datos" />
+
+
+</menu>

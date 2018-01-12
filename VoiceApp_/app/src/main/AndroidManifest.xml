@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.appdiccion.andresbertel.voiceapp_">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.PERMISSION_GRANTED" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".inicio" />
+        <activity
+            android:name=".intefaz_contacto"
+            android:label="@string/title_activity_intefaz_contacto" />
+        <activity
+            android:name=".cargando"
+            android:label="@string/title_activity_cargando"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegistroUsuario"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainPrincipal"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegistroCuestionario"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Cuestionario"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Principal" />
+        <activity
+            android:name=".Splash"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ver_contactos" />
+        <activity android:name=".ListadodeContactos" />
+        <activity android:name=".TiposdeViolencia" />
+        <activity android:name=".rutasdeatencion" />
+        <activity
+            android:name=".TiposViolencia.IViolenciaFisica"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TiposViolencia.IViolenciaPatrimonial"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TiposViolencia.IViolenciaPsicologica"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TiposViolencia.IViolenciaSexual"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".RutasdeAtencion.RutaFisica" />
+        <activity android:name=".RutasdeAtencion.RutaPsicologica" />
+        <activity android:name=".RutasdeAtencion.RutaPatrimonial" />
+        <activity android:name=".RutasdeAtencion.RutaSexual" />
+        <activity android:name=".ListaContactos.ListaContactosPrincipal" />
+        <activity android:name=".Apoya"
+                   android:parentActivityName=".Principal"/>
+        <activity android:name=".actualizarContacto" />
+        <activity android:name=".MisDatos"></activity>
+    </application>
+
+</manifest>

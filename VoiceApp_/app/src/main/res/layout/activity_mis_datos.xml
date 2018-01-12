@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.appdiccion.andresbertel.voiceapp_.MisDatos"
+    tools:showIn="@layout/activity_mis_datos">
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="111dp"
+        app:srcCompat="@mipmap/bannerok" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="138dp"
+        android:layout_margin="10dp"
+        app:srcCompat="@mipmap/contacto" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="172dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txtminombre1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="MI NOMBRE"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/txtminombre"
+                android:layout_width="335dp"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/txtalias"
+                android:layout_width="334dp"
+                android:layout_height="match_parent"
+                android:hint="ALIAS"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="TELEFONO POLICIA"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/txpolicia"
+                android:layout_width="335dp"
+                android:layout_height="match_parent"
+                android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/btnguardar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btnguardar" />
+    </LinearLayout>
+
+
+</LinearLayout>

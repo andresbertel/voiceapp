@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.appdiccion.andresbertel.voiceapp_.intefaz_contacto"
+    tools:showIn="@layout/activity_intefaz_contacto">
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="111dp"
+        app:srcCompat="@mipmap/bannerok" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="138dp"
+        android:layout_margin="10dp"
+        app:srcCompat="@mipmap/contacto" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="172dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="NOMBRE"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/ETnombre"
+                android:layout_width="335dp"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/ETcelular"
+                android:layout_width="334dp"
+                android:layout_height="match_parent"
+                android:hint="CELULAR"
+                android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="EMAIL"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/ETemail"
+                android:layout_width="335dp"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/bntagragarcont"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/fondoBase"
+            android:src="@mipmap/bntagregar" />
+    </LinearLayout>
+
+
+</LinearLayout>
