@@ -34,8 +34,6 @@ import java.util.List;
 import java.util.Locale;
 
 
-
-
 public class inicio extends AppCompatActivity {
 
     public EditText messageTextView2;

@@ -10,8 +10,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-
-
 import com.appdiccion.andresbertel.voiceapp_.ListaContactos.ListaContactosPrincipal;
 
 public class Apoya extends AppCompatActivity {
@@ -23,7 +21,6 @@ public class Apoya extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_apoya);
-
 
     }
 
@@ -60,10 +57,6 @@ public class Apoya extends AppCompatActivity {
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
 
-            /*case android.R.id.home: //hago un case por si en un futuro agrego mas opciones
-                Log.i("ActionBar", "Atrás!");
-                finish();
-                return true;*/
 
             default:
                 return super.onOptionsItemSelected(item);

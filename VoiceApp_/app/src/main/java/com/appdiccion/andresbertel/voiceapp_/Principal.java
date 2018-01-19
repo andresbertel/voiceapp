@@ -228,7 +228,7 @@ public class Principal extends AppCompatActivity
                         }
 
 
-                        Toast.makeText(getApplicationContext(), "llamada", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(), "llamada", Toast.LENGTH_SHORT).show();
                         call(Policia);//REALIZA LLAMADAAAAA
 
                     } catch (Exception e) {
@@ -289,7 +289,7 @@ public class Principal extends AppCompatActivity
                     //requestPermissions(new String[]{Manifest.permission.SEND_SMS}, REQUEST_SEND_SMS);
                 } else {
                     msn(telefono, mensajeauxilio, NombrePropio + " (" + Alias + ")");
-                    Toast.makeText(this, "NO NECESITO PERMISOS MESAJE TEXTO", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "NO NECESITO PERMISOS MESAJE TEXTO", Toast.LENGTH_SHORT).show();
                 }
 
                 //Toast.makeText(getApplicationContext(), "Contacto Agregado " + "id: " + id + " Nombres: " + nombre + " Celular: " + telefono + " Email: " + email, Toast.LENGTH_SHORT).show();
@@ -329,7 +329,7 @@ public class Principal extends AppCompatActivity
 
         String number = Numero;
         Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:" + number));
+        intent.setData(Uri.parse("tel:+" + number));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -346,7 +346,7 @@ public class Principal extends AppCompatActivity
 
     private void msn(String Numero, String Mensaje, String Nombre) {
 
-        Toast.makeText(this,"metodo msn",Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(this,"metodo msn",Toast.LENGTH_SHORT).show();
         ArrayList Mensajep;
         // Check the SDK version and whether the permission is already granted or not.
 
@@ -362,7 +362,7 @@ public class Principal extends AppCompatActivity
 
           }
 
-           Toast.makeText(getApplicationContext(), "Mensaje Enviado.", Toast.LENGTH_LONG).show();
+          // Toast.makeText(getApplicationContext(), "Mensaje Enviado.", Toast.LENGTH_LONG).show();
     }
 
 
