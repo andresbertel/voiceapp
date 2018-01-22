@@ -91,7 +91,7 @@ public class Apoya extends AppCompatActivity {
                 // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            
+
             startActivity(callIntent);
         } catch (Exception e) {
             // in case something went wrong ...
