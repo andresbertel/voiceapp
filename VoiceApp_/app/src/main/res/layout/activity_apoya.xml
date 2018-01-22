@@ -5,6 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/lineasdeatencion"
+    android:orientation="vertical"
     tools:context="com.appdiccion.andresbertel.voiceapp_.Apoya">
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/latencion_01" />
+
+    <ImageButton
+        android:id="@+id/imagePolicia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/latencion_02" />
+
+    <ImageButton
+        android:id="@+id/imageMujer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/latencion_03" />
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +15,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.appdiccion.andresbertel.voiceapp_.ListaContactos.ListaContactosPrincipal;
+
+import java.util.regex.Pattern;
 
 public class intefaz_contacto extends AppCompatActivity {
 
@@ -38,6 +41,8 @@ public class intefaz_contacto extends AppCompatActivity {
         final EditText email = (EditText) findViewById(R.id.ETemail);
 
 
+
+
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,19 +50,34 @@ public class intefaz_contacto extends AppCompatActivity {
             if(nombre.getText().toString().equals(null)||celulr.getText().toString().equals(null)||email.getText().toString().equals(null)||nombre.getText().toString().equals("")||celulr.getText().toString().equals("")||email.getText().toString().equals("")){
                 Toast.makeText(getApplicationContext(), "Campos Vacios", Toast.LENGTH_LONG).show();
             }else {
-                MDB.insertarCONTACTO(nombre.getText().toString(), celulr.getText().toString(), email.getText().toString());
 
-                celulr.setText("");
-                email.setText("");
-                nombre.setText("");
-                nombre.requestFocus();
-                Toast.makeText(getApplicationContext(), "Contacto Agregado", Toast.LENGTH_LONG).show();
+
+                if (!validarEmail(email.getText().toString())) {
+                    email.setError("Email no válido");
+
+                } else {
+
+                    MDB.insertarCONTACTO(nombre.getText().toString(), celulr.getText().toString(), email.getText().toString());
+
+                    celulr.setText("");
+                    email.setText("");
+                    nombre.setText("");
+                    nombre.requestFocus();
+
+                    Toast.makeText(getApplicationContext(), "Contacto Agregado", Toast.LENGTH_LONG).show();
+                }
             }
 
 
             }
         });
 
+    }
+
+
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

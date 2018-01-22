@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.appdiccion.andresbertel.voiceapp_.Contactos;
 import com.appdiccion.andresbertel.voiceapp_.MiBaseDatos;
+import com.appdiccion.andresbertel.voiceapp_.MisDatos;
 import com.appdiccion.andresbertel.voiceapp_.Principal;
 import com.appdiccion.andresbertel.voiceapp_.R;
 import com.appdiccion.andresbertel.voiceapp_.intefaz_contacto;
@@ -88,25 +89,29 @@ public class ListaContactosPrincipal extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.iaconctacto:
-                Toast.makeText(this, "Agregra", Toast.LENGTH_LONG).show();
+                // Toast.makeText(this, "Agregra", Toast.LENGTH_LONG).show();
                 Intent ventanacontactos = new Intent(getApplicationContext(), intefaz_contacto.class);
                 startActivity(ventanacontactos);
                 Log.d("analisis", "naaa");
                 return true;
             case R.id.iinicio:
-                Toast.makeText(this, "Inicio", Toast.LENGTH_LONG).show();
+                // Toast.makeText(this, "Inicio", Toast.LENGTH_LONG).show();
                 Intent ventanainicio = new Intent(getApplicationContext(), Principal.class);
                 startActivity(ventanainicio);
                 return true;
             case R.id.icontacto:
-                Toast.makeText(this, "Ver contactos", Toast.LENGTH_LONG).show();
-                Toast.makeText(this, "contactos", Toast.LENGTH_LONG).show();
+                // Toast.makeText(this, "Ver contactos", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "contactos", Toast.LENGTH_LONG).show();
                 Intent ventanalistadocontactos = new Intent(getApplicationContext(), ListaContactosPrincipal.class);
                 startActivity(ventanalistadocontactos);
                 return true;
             case R.id.imisdatos:
-                Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                Intent ventanamisdatoss = new Intent(getApplicationContext(), MisDatos.class);
+                startActivity(ventanamisdatoss);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
+
+
             default:
                 return super.onOptionsItemSelected(item);
         }

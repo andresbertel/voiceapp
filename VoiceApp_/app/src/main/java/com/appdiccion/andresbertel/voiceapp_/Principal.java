@@ -325,11 +325,12 @@ public class Principal extends AppCompatActivity
     }
 
 
-    private void call(String Numero) {
+    public void call(String Numero) {
 
         String number = Numero;
         Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:+" + number));
+
+        intent.setData(Uri.parse("tel:" + number));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -343,6 +344,8 @@ public class Principal extends AppCompatActivity
         startActivity(intent);
 
     }
+
+
 
     private void msn(String Numero, String Mensaje, String Nombre) {
 
@@ -477,7 +480,7 @@ public class Principal extends AppCompatActivity
                 startActivity(ventanainicio);
                 return true;
             case R.id.icontacto:
-                Toast.makeText(this, "Ver contactos", Toast.LENGTH_LONG).show();
+               // Toast.makeText(this, "Ver contactos", Toast.LENGTH_LONG).show();
                 //Toast.makeText(this, "contactos", Toast.LENGTH_LONG).show();
                 Intent ventanalistadocontactos = new Intent(getApplicationContext(), ListaContactosPrincipal.class);
                 startActivity(ventanalistadocontactos);
