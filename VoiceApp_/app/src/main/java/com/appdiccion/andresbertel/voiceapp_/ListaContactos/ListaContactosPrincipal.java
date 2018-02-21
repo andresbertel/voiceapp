@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.appdiccion.andresbertel.voiceapp_.Contactos;
 import com.appdiccion.andresbertel.voiceapp_.MiBaseDatos;
+import com.appdiccion.andresbertel.voiceapp_.MisAgresores;
 import com.appdiccion.andresbertel.voiceapp_.MisDatos;
 import com.appdiccion.andresbertel.voiceapp_.Principal;
 import com.appdiccion.andresbertel.voiceapp_.R;
@@ -110,8 +111,11 @@ public class ListaContactosPrincipal extends AppCompatActivity {
                 startActivity(ventanamisdatoss);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
-
-
+            case R.id.imisagresor:
+                Intent VentanaAgresores = new Intent(getApplicationContext(), MisAgresores.class);
+                startActivity(VentanaAgresores);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

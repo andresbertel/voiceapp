@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MiBaseDatos extends SQLiteOpenHelper {
 
-            private static final int VERSION_BASEDATOS = 2;
+            private static final int VERSION_BASEDATOS = 1;
 
             // Nombre de nuestro archivo de base de datos
             private static final String NOMBRE_BASEDATOS = "contactos.db";
@@ -26,6 +26,7 @@ public class MiBaseDatos extends SQLiteOpenHelper {
            // Nombre de la tabla
             private static final String TABLA="contactos";
             private static final String TABLA1="misdatos";
+             private static final String TABLA2="agresor";
 
             // Sentencia SQL para la creación de una tabla
             private static final String CONSULTA_TABLA_CONTACTOS = "CREATE TABLE "+TABLA+
@@ -33,6 +34,9 @@ public class MiBaseDatos extends SQLiteOpenHelper {
 
             private static final String CONSULTA_TABLA_MISDATOS = "CREATE TABLE "+TABLA1+
              "(_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, alias TEXT, policia TEXT)";
+
+    private static final String CONSULTA_TABLA_AGRESOR = "CREATE TABLE "+TABLA2+
+            "(_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, descripcion_agresor TEXT, descripcion_agresion TEXT)";
 
 
 
@@ -45,6 +49,7 @@ public class MiBaseDatos extends SQLiteOpenHelper {
             public void onCreate(SQLiteDatabase db) {
                 db.execSQL(CONSULTA_TABLA_CONTACTOS);
                 db.execSQL(CONSULTA_TABLA_MISDATOS);
+                db.execSQL(CONSULTA_TABLA_AGRESOR);
 
 
                 Log.d("revisar","Oncreate");
@@ -55,6 +60,7 @@ public class MiBaseDatos extends SQLiteOpenHelper {
             public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
                 db.execSQL("DROP TABLE IF EXISTS " + TABLA);
                 db.execSQL("DROP TABLE IF EXISTS " + TABLA1);
+                db.execSQL("DROP TABLE IF EXISTS " + TABLA2);
                 Log.d("revisar","OnUpgrade");
                onCreate(db);
 
@@ -183,14 +189,97 @@ if(c.moveToFirst()){
 
 }
 
-
-
-
-
-
         db.close();
         c.close();
         return lista_contactos;
+    }
+
+
+
+
+    /**********************************************************************/
+
+    public void insertarAGRESOR(int id, String nom, String desA, String DesAgresion) {
+        SQLiteDatabase db = getWritableDatabase();
+        if(db != null){
+            ContentValues valores = new ContentValues();
+           // nombre TEXT, descripcion_agresor TEXT, descripcion_agresion TEXT
+             valores.put("_id", id);
+            valores.put("nombre", nom);
+            valores.put("descripcion_agresor", desA);
+            valores.put("descripcion_agresion", DesAgresion);
+            db.insert("agresor", null, valores);
+            db.close();
+        }
+    }
+
+    public void modificarAGRESOR(int id, String nom, String desA, String DesAgresion){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues valores = new ContentValues();
+        valores.put("_id", id);
+        valores.put("nombre", nom);
+        valores.put("descripcion_agresor", desA);
+        valores.put("descripcion_agresion", DesAgresion);
+        db.update("agresor", valores, "_id=" + id, null);
+        db.close();
+    }
+
+    public void borrarAGRESOR(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete("agresor", "_id="+id, null);
+        db.close();
+    }
+
+    public agresor recuperarAGRESOR(int id) {
+
+        agresor miagresor=null;
+        try {
+
+            SQLiteDatabase db2 = getReadableDatabase();
+            String[] valores_recuperar = {"_id", "nombre", "descripcion_agresor", "descripcion_agresion"};
+            Cursor c = db2.query("agresor", valores_recuperar, "_id=" + id,
+                    null, null, null, null, null);
+            if (c != null) {
+                c.moveToFirst();
+                miagresor = new agresor(1, c.getString(1),
+                        c.getString(2), c.getString(3));
+
+            }
+
+
+
+            db2.close();
+            c.close();
+        }catch (Exception e){
+            Log.e("Bassee ",""+e);
+        }
+
+        return miagresor;
+    }
+
+    public List<agresor> recuperarAGRESOR() {
+        SQLiteDatabase db = getReadableDatabase();
+        List<agresor> lista_agresor = new ArrayList<agresor>();
+        String[] valores_recuperar = {"_id", "nombre", "descripcion_agresor", "descripcion_agresion"};
+        Cursor c = db.query("agresor", valores_recuperar,
+                null, null, null, null, null, null);
+        // c.moveToFirst();
+
+
+        if(c.moveToFirst()){
+
+            do {
+                agresor agres = new agresor(c.getInt(0), c.getString(1),
+                        c.getString(2), c.getString(3));
+                lista_agresor.add(agres);
+            } while (c.moveToNext());
+
+
+        }
+
+        db.close();
+        c.close();
+        return lista_agresor;
     }
 
 

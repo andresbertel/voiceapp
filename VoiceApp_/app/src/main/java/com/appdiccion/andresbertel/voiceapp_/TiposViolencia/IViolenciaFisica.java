@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.appdiccion.andresbertel.voiceapp_.ListaContactos.ListaContactosPrincipal;
 import com.appdiccion.andresbertel.voiceapp_.ListadodeContactos;
+import com.appdiccion.andresbertel.voiceapp_.MisAgresores;
 import com.appdiccion.andresbertel.voiceapp_.MisDatos;
 import com.appdiccion.andresbertel.voiceapp_.Principal;
 import com.appdiccion.andresbertel.voiceapp_.R;
@@ -67,7 +68,7 @@ public class IViolenciaFisica extends AppCompatActivity {
                 startActivity(ventanainicio);
                 return true;
             case R.id.icontacto:
-                //Toast.makeText(this, "Ver contactos", Toast.LENGTH_LONG).show();
+                // Toast.makeText(this, "Ver contactos", Toast.LENGTH_LONG).show();
                 //Toast.makeText(this, "contactos", Toast.LENGTH_LONG).show();
                 Intent ventanalistadocontactos = new Intent(getApplicationContext(), ListaContactosPrincipal.class);
                 startActivity(ventanalistadocontactos);
@@ -75,6 +76,11 @@ public class IViolenciaFisica extends AppCompatActivity {
             case R.id.imisdatos:
                 Intent ventanamisdatoss = new Intent(getApplicationContext(), MisDatos.class);
                 startActivity(ventanamisdatoss);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.imisagresor:
+                Intent VentanaAgresores = new Intent(getApplicationContext(), MisAgresores.class);
+                startActivity(VentanaAgresores);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
             default:

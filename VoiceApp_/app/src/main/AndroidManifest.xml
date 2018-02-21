@@ -17,8 +17,6 @@
         android:name="android.hardware.location.gps"
         android:required="false" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,16 +29,15 @@
         <activity
             android:name=".intefaz_contacto"
             android:label="@string/title_activity_intefaz_contacto"
-            android:parentActivityName=".Principal"/>
+            android:parentActivityName=".Principal" />
         <activity
             android:name=".cargando"
             android:label="@string/title_activity_cargando"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegistroUsuario"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".Principal"/>
+            android:parentActivityName=".Principal"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainPrincipal"
             android:screenOrientation="portrait" />
@@ -50,7 +47,6 @@
         <activity
             android:name=".Cuestionario"
             android:screenOrientation="portrait" />
-
         <activity android:name=".Principal" />
         <activity
             android:name=".Splash"
@@ -61,41 +57,64 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ver_contactos" android:parentActivityName=".Principal"/>
-        <activity android:name=".ListadodeContactos" android:parentActivityName=".Principal" />
-        <activity android:name=".TiposdeViolencia" android:parentActivityName=".Principal"/>
+        <activity
+            android:name=".ver_contactos"
+            android:parentActivityName=".Principal" />
+        <activity
+            android:name=".ListadodeContactos"
+            android:parentActivityName=".Principal" />
+        <activity
+            android:name=".TiposdeViolencia"
+            android:parentActivityName=".Principal" />
         <activity android:name=".rutasdeatencion" />
         <activity
             android:name=".TiposViolencia.IViolenciaFisica"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".TiposdeViolencia"/>
+            android:parentActivityName=".TiposdeViolencia"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TiposViolencia.IViolenciaPatrimonial"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".TiposdeViolencia"/>
+            android:parentActivityName=".TiposdeViolencia"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TiposViolencia.IViolenciaPsicologica"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".TiposdeViolencia"/>
+            android:parentActivityName=".TiposdeViolencia"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TiposViolencia.IViolenciaSexual"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".TiposdeViolencia"/>
-
-
-        <activity android:name=".RutasdeAtencion.RutaFisica" android:parentActivityName=".TiposViolencia.IViolenciaFisica"/>
-        <activity android:name=".RutasdeAtencion.RutaPsicologica" android:parentActivityName=".TiposViolencia.IViolenciaPsicologica" />
-        <activity android:name=".RutasdeAtencion.RutaPatrimonial"  android:parentActivityName=".TiposViolencia.IViolenciaPatrimonial"/>
-        <activity android:name=".RutasdeAtencion.RutaSexual"  android:parentActivityName=".TiposViolencia.IViolenciaSexual"/>
-        <activity android:name=".ListaContactos.ListaContactosPrincipal" android:parentActivityName=".Principal" />
-        <activity android:name=".Apoya"
-                   android:parentActivityName=".Principal"/>
-        <activity android:name=".actualizarContacto" android:parentActivityName=".Principal" />
-        <activity android:name=".MisDatos" android:parentActivityName=".Principal"></activity>
+            android:parentActivityName=".TiposdeViolencia"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MisAgresores"
+            android:parentActivityName=".Principal" />
+        <activity
+            android:name=".RutasdeAtencion.RutaFisica"
+            android:parentActivityName=".TiposViolencia.IViolenciaFisica" />
+        <activity
+            android:name=".RutasdeAtencion.RutaPsicologica"
+            android:parentActivityName=".TiposViolencia.IViolenciaPsicologica" />
+        <activity
+            android:name=".RutasdeAtencion.RutaPatrimonial"
+            android:parentActivityName=".TiposViolencia.IViolenciaPatrimonial" />
+        <activity
+            android:name=".RutasdeAtencion.RutaSexual"
+            android:parentActivityName=".TiposViolencia.IViolenciaSexual" />
+        <activity
+            android:name=".ListaContactos.ListaContactosPrincipal"
+            android:parentActivityName=".Principal" />
+        <activity
+            android:name=".Apoya"
+            android:parentActivityName=".Principal" />
+        <activity
+            android:name=".actualizarContacto"
+            android:parentActivityName=".Principal" />
+        <activity
+            android:name=".MisDatos"
+            android:parentActivityName=".Principal" />
+        <activity android:name=".Utilidades.Agresores"></activity>
     </application>
 
 </manifest>

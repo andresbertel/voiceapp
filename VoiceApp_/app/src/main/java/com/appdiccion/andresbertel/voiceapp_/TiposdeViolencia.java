@@ -77,7 +77,7 @@ public class TiposdeViolencia extends AppCompatActivity implements View.OnClickL
                 startActivity(ventanainicio);
                 return true;
             case R.id.icontacto:
-               // Toast.makeText(this, "Ver contactos", Toast.LENGTH_LONG).show();
+                // Toast.makeText(this, "Ver contactos", Toast.LENGTH_LONG).show();
                 //Toast.makeText(this, "contactos", Toast.LENGTH_LONG).show();
                 Intent ventanalistadocontactos = new Intent(getApplicationContext(), ListaContactosPrincipal.class);
                 startActivity(ventanalistadocontactos);
@@ -85,6 +85,11 @@ public class TiposdeViolencia extends AppCompatActivity implements View.OnClickL
             case R.id.imisdatos:
                 Intent ventanamisdatoss = new Intent(getApplicationContext(), MisDatos.class);
                 startActivity(ventanamisdatoss);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.imisagresor:
+                Intent VentanaAgresores = new Intent(getApplicationContext(), MisAgresores.class);
+                startActivity(VentanaAgresores);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
             default:

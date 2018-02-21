@@ -14,8 +14,12 @@
         android:title="Ver Contactos" />
 
     <item
-        android:id="@+id/imisdatos"
-        android:title="Mis Datos" />
+    android:id="@+id/imisdatos"
+    android:title="Mis Datos" />
+
+    <item
+        android:id="@+id/imisagresor"
+        android:title="Mis Agresores" />
 
 
 </menu>

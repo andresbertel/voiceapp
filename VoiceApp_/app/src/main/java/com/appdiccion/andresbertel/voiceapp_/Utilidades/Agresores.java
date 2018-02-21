@@ -1,4 +1,4 @@
-package com.appdiccion.andresbertel.voiceapp_;
+package com.appdiccion.andresbertel.voiceapp_.Utilidades;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -9,49 +9,55 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.appdiccion.andresbertel.voiceapp_.ListaContactos.ListaContactosPrincipal;
+import com.appdiccion.andresbertel.voiceapp_.MiBaseDatos;
+import com.appdiccion.andresbertel.voiceapp_.MisDatos;
+import com.appdiccion.andresbertel.voiceapp_.MisDatosPersonales;
+import com.appdiccion.andresbertel.voiceapp_.Principal;
+import com.appdiccion.andresbertel.voiceapp_.R;
+import com.appdiccion.andresbertel.voiceapp_.intefaz_contacto;
 
-public class MisDatos extends AppCompatActivity {
+public class Agresores extends AppCompatActivity {
+
 
     MiBaseDatos MBD;
-    TextView MiNombre;
-    TextView MiAlias;
-    TextView Policia;
-    ImageButton btGuardar;
+    TextView NombreAgresor;
+    TextView Descripc_agresor;
+    TextView Descrip_agresion;
+    ImageButton btGuardarAgre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.activity_mis_datos);
+        setContentView(R.layout.activity_agresores);
 
         MBD=new MiBaseDatos(getApplicationContext());
 
-       MiNombre=(EditText)findViewById(R.id.txtminombre);
-       MiAlias=(EditText)findViewById(R.id.txtalias);
-       Policia=(EditText)findViewById(R.id.txpolicia);
+        NombreAgresor=(EditText)findViewById(R.id.txtminombreagresor);
+        Descripc_agresor=(EditText)findViewById(R.id.desAgresor);
+        Descrip_agresion=(EditText)findViewById(R.id.txagresion);
+        btGuardarAgre=(ImageButton)findViewById(R.id.btnguardaragre);
 
-       btGuardar=(ImageButton)findViewById(R.id.btnguardar);
 
-        ImageButton btnGuardar=(ImageButton)findViewById(R.id.btnguardar);
 
-         String Nombre=MiNombre.getText().toString();
-         String alias1=MiAlias.getText().toString();
-         String Poli=Policia.getText().toString();
+
+
+        String NombreAgresorT=NombreAgresor.getText().toString();
+        String Descripc_agresorT=Descripc_agresor.getText().toString();
+        String Descrip_agresiont=Descrip_agresion.getText().toString();
 
         cargardatos(1);
 
-        btGuardar.setOnClickListener(new View.OnClickListener() {
+        btGuardarAgre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GuardarMisDatos(MiNombre.getText().toString(),MiAlias.getText().toString(),Policia.getText().toString());
+                GuardarMisDatos(NombreAgresor.getText().toString(),Descripc_agresor.getText().toString(),Descrip_agresion.getText().toString());
             }
         });
 
@@ -60,49 +66,49 @@ public class MisDatos extends AppCompatActivity {
     public void cargardatos(int id){
         MisDatosPersonales datos=  MBD.recuperarMISDATOS(id);
 
-       if(datos==null){
+        if(datos==null){
 
         }else{
-            MiNombre.setText(datos.getNombre());
-            MiAlias.setText(datos.getAlias());
-            Policia.setText(datos.getPolicia());
+            NombreAgresor.setText(datos.getNombre());
+            Descripc_agresor.setText(datos.getAlias());
+            Descrip_agresion.setText(datos.getPolicia());
 
 
         }
     }
 
-    public void GuardarMisDatos(String Nombre,String Alias, String Policia){
+    public void GuardarMisDatos(String Nombre,String Descripc_agresor, String Descrip_agresion){
 
 
 
-      if(verificar(Nombre,Alias,Policia)==false){
+        if(verificar(Nombre,Descripc_agresor,Descrip_agresion)==false){
 
-          Toast.makeText(getApplicationContext(),"Datos Vacios", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Datos Vacios", Toast.LENGTH_SHORT).show();
 
-                }else{
-                      Toast.makeText(getApplicationContext(),"Datos Guardados", Toast.LENGTH_SHORT).show();
-                        MisDatosPersonales conta=  MBD.recuperarMISDATOS(1);
+        }else{
+            Toast.makeText(getApplicationContext(),"Datos Guardados", Toast.LENGTH_SHORT).show();
+            MisDatosPersonales conta=  MBD.recuperarMISDATOS(1);
 
-                      if(conta==null){
-                          MBD.insertarMISDATOS(1,Nombre,Alias,Policia);
-                               }else{
-                                    MBD.modificarMISDATOS(1,Nombre,Alias,Policia);
-                         }
+            if(conta==null){
+                MBD.insertarMISDATOS(1,Nombre,Descripc_agresor,Descrip_agresion);
+            }else{
+                MBD.modificarMISDATOS(1,Nombre,Descripc_agresor,Descrip_agresion);
+            }
 
-      }
+        }
 
-     }
+    }
 
-     public boolean verificar(String Nombre,String Alias, String Policia){
+    public boolean verificar(String Nombre,String Descripc_agresor, String Descrip_agresion){
         boolean r=false;
 
-         if(Nombre.equals(null)||Alias.equals(null)||Policia.equals(null)||Nombre.equals("")||Alias.equals("")||Policia.equals("")){
-             r=false;
-                 }else{
-                    r=true;
-             }
+        if(Nombre.equals(null)||Descripc_agresor.equals(null)||Descrip_agresion.equals(null)||Nombre.equals("")||Descripc_agresor.equals("")||Descrip_agresion.equals("")){
+            r=false;
+        }else{
+            r=true;
+        }
         return r;
-     }
+    }
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -127,7 +133,7 @@ public class MisDatos extends AppCompatActivity {
                 return true;
             case R.id.icontacto:
                 // Toast.makeText(this, "Ver contactos", Toast.LENGTH_LONG).show();
-                //Toast.makeText(this, "contactos", Toast.LENGTH_LONG).show();
+                // Toast.makeText(this, "contactos", Toast.LENGTH_LONG).show();
                 Intent ventanalistadocontactos = new Intent(getApplicationContext(), ListaContactosPrincipal.class);
                 startActivity(ventanalistadocontactos);
                 return true;
@@ -136,15 +142,8 @@ public class MisDatos extends AppCompatActivity {
                 startActivity(ventanamisdatoss);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
-            case R.id.imisagresor:
-                Intent VentanaAgresores = new Intent(getApplicationContext(), MisAgresores.class);
-                startActivity(VentanaAgresores);
-                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
