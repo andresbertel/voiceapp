@@ -79,13 +79,13 @@ public class Principal extends AppCompatActivity
 
     /*********VARIABLES DE CONTACTOS**********/
     String nombre = "";
-    String telefono = "12345";
+    String telefono = "123";
     String email = "";
 
     /***********MIS DATOS PERSONALES****************/
     String NombrePropio = "";
     String Alias = "";
-    String Policia = "12345";
+    String Policia = "123";
 
     /*********VARIABLE DE MENSAJE***********/
     String mensajeauxilio;
@@ -241,6 +241,12 @@ public class Principal extends AppCompatActivity
         });
 
 
+       this.buscarMisDatos();
+
+
+
+
+
     }
 
     public void buscarMisDatos() {
@@ -250,6 +256,22 @@ public class Principal extends AppCompatActivity
             NombrePropio = dp.getNombre();
             Alias = dp.getAlias();
             Policia = dp.getPolicia();
+
+
+            List a=  MDB.recuperarCONTACTOS();
+            int longitLis=a.size();
+
+            if(longitLis<1){
+                Intent ventanacontactos = new Intent(getApplicationContext(), intefaz_contacto.class);
+                startActivity(ventanacontactos);
+            }
+
+        }else{
+
+            Intent ventanamisdatoss = new Intent(getApplicationContext(), MisDatos.class);
+            startActivity(ventanamisdatoss);
+
+
 
         }
     }

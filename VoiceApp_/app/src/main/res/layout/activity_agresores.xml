@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:hint="NOMBRE DEL AGRESOR"
+            android:hint="NOMBRE DEL PRESUNTO AGRESOR"
             android:weightSum="1">
 
             <EditText
@@ -42,7 +42,7 @@
                 android:layout_width="334dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:hint="DESCRIPCIÓN DEL AGRESOR"
+                android:hint="DESCRIPCIÓN DEL PRESUNTO AGRESOR"
                 android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
