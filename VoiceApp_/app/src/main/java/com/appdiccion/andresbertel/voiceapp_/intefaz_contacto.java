@@ -35,6 +35,12 @@ public class intefaz_contacto extends AppCompatActivity {
 
         MDB = new MiBaseDatos(getApplicationContext());
 
+        int numContactos=MDB.recuperarCONTACTOS().size();
+
+           if(numContactos<1){
+               Toast.makeText(getApplicationContext(),"PARA CONTINUAR, AGREGUE AL MENOS UN CONTACTO",Toast.LENGTH_LONG).show();
+           }
+
         ImageButton boton = (ImageButton) findViewById(R.id.bntagragarcont);
         final EditText nombre = (EditText) findViewById(R.id.ETnombre);
         final EditText celulr = (EditText) findViewById(R.id.ETcelular);

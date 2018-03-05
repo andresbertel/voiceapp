@@ -62,6 +62,8 @@ public class MisDatos extends AppCompatActivity {
 
        if(datos==null){
 
+           Toast.makeText(getApplicationContext(),"AGREGA TUS DATOS PERSONALES",Toast.LENGTH_LONG).show();
+
         }else{
             MiNombre.setText(datos.getNombre());
             MiAlias.setText(datos.getAlias());

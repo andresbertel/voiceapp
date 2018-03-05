@@ -45,13 +45,23 @@ public class ListadodeContactos extends AppCompatActivity {
         recicle.setItemViewCacheSize(20);
 
        // NombreCuestionario=(TextView)findViewById(R.id.textView61);
+        int numContactos=MDB.recuperarCONTACTOS().size();
 
+        if(numContactos<1){
+
+            Intent ventanacontactos = new Intent(getApplicationContext(), intefaz_contacto.class);
+            startActivity(ventanacontactos);
+        }
 
 
         llenarContactos();
 
         final AdaptadorContactos adapter=new AdaptadorContactos(listaContactos);
         recicle.setAdapter(adapter);
+
+
+
+
 
 
     }

@@ -59,6 +59,15 @@ public class MisAgresores extends AppCompatActivity {
             }
         });
 
+        MBD = new MiBaseDatos(getApplicationContext());
+        int numContactos=MBD.recuperarCONTACTOS().size();
+
+        if(numContactos<1){
+
+            Intent ventanacontactos = new Intent(getApplicationContext(), intefaz_contacto.class);
+            startActivity(ventanacontactos);
+        }
+
     }
 
     public void cargardatos(int id){

@@ -44,6 +44,15 @@ public class ListaContactosPrincipal extends AppCompatActivity {
 
         MDB = new MiBaseDatos(getApplicationContext());
 
+        int numContactos=MDB.recuperarCONTACTOS().size();
+
+        if(numContactos<1){
+
+            Intent ventanacontactos = new Intent(getApplicationContext(), intefaz_contacto.class);
+            startActivity(ventanacontactos);
+        }
+
+
         listaContactos=new ArrayList<Contactos>();
 
         llenarContactos();

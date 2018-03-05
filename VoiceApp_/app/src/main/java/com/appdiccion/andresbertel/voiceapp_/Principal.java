@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -17,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
@@ -38,6 +40,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.appdiccion.andresbertel.voiceapp_.R.id.messageTextView2;
 
@@ -67,6 +71,9 @@ public class Principal extends AppCompatActivity
     private static final int PETICION_PERMISO_LOCALIZACION = 101;
     private static final int REQUEST_CALL_PHONE = 103;
     private static final int REQUEST_SEND_SMS = 104;
+
+
+    private static final long SPLASH_PRINCIPAL_DELAY = 1000;
     // private static final int MY_PERMISSIONS_REQUEST_SEND_SMS=102;
 
     private GoogleApiClient apiClient;
@@ -97,31 +104,14 @@ public class Principal extends AppCompatActivity
 
     /************VARIABLE SW PARA PERMISO DE MENSAJES**********/
 
-    @Override
+
     protected void onStart() {
         super.onStart();
         apiClient.connect();
 
-/**********************SOLICITO PERMISOS PARA ENVIAR MENSAJES DE TEXTO***************************/
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-            //Toast.makeText(this, "SI NECESITO PERMISOS MESAJE TEXTO", Toast.LENGTH_SHORT).show();
-            requestPermissions(new String[]{Manifest.permission.SEND_SMS}, REQUEST_SEND_SMS);
-        } else {
-           // Toast.makeText(this, "NO NECESITO PERMISOS MESAJE TEXTO", Toast.LENGTH_SHORT).show();
-        }
-
-/**********************SOLICITO PERMISOS PARA REALIZAR LLAMADAS***************************/
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-           // Toast.makeText(this, "SI NECESITO PERMISOS LLAMADA", Toast.LENGTH_SHORT).show();
-            requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
-        } else {
-            //Toast.makeText(this, "NO NECESITO PERMISOS LLAMADA", Toast.LENGTH_SHORT).show();
-
-        }
-
 
     }
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -150,7 +140,7 @@ public class Principal extends AppCompatActivity
         btnapoya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // dialogoActivarGPS();
                 Intent irapoyo = new Intent(getApplicationContext(), Apoya.class);
                 startActivity(irapoyo);
                 // msn("3015735780","Holaa","Andres");
@@ -180,14 +170,42 @@ public class Principal extends AppCompatActivity
 
 
         boton.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
 
 
                 mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                if ((!mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) || (isNetDisponible() == false)) {
-                    AlertNoRed();
-                } else {
+
+
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                boolean v = mlocManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+                //Toast.makeText(getApplicationContext(),"El valor de V es: "+isNetDisponible(),Toast.LENGTH_SHORT).show();
+
+
+               if ((!mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && !mlocManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))) {
+                    AlertNoGPSActivo();
+                   // dialogoActivarGPS();
+
+
+                } else if(!isNetDisponible()) {
+
+                   AlertNoRedActivo();
+
+
+
+
+               }else{
                     //Toast.makeText(getApplicationContext(),"Else boton ..........",Toast.LENGTH_SHORT).show();
 
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -249,6 +267,29 @@ public class Principal extends AppCompatActivity
 
     }
 
+
+    private void verificarPermisos(){
+        // Start the next activity
+        /**********************SOLICITO PERMISOS PARA ENVIAR MENSAJES DE TEXTO***************************/
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            //Toast.makeText(this, "SI NECESITO PERMISOS MESAJE TEXTO", Toast.LENGTH_SHORT).show();
+            requestPermissions(new String[]{Manifest.permission.SEND_SMS}, REQUEST_SEND_SMS);
+        } else {
+            // Toast.makeText(this, "NO NECESITO PERMISOS MESAJE TEXTO", Toast.LENGTH_SHORT).show();
+        }
+
+/**********************SOLICITO PERMISOS PARA REALIZAR LLAMADAS***************************/
+
+      /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // Toast.makeText(this, "SI NECESITO PERMISOS LLAMADA", Toast.LENGTH_SHORT).show();
+            requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
+        } else {
+            //Toast.makeText(this, "NO NECESITO PERMISOS LLAMADA", Toast.LENGTH_SHORT).show();
+
+        }*/
+    }
+
+
     public void buscarMisDatos() {
         MisDatosPersonales dp = MDB.recuperarMISDATOS(1);
 
@@ -264,6 +305,26 @@ public class Principal extends AppCompatActivity
             if(longitLis<1){
                 Intent ventanacontactos = new Intent(getApplicationContext(), intefaz_contacto.class);
                 startActivity(ventanacontactos);
+            }else{
+
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        verificarPermisos();
+
+                        // Close the activity so the user won't able to go back this
+                        // activity pressing Back button
+                        //finish();
+                    }
+
+
+                };
+
+                // Simulate a long loading process on application startup.
+                Timer timer = new Timer();
+                timer.schedule(task, 1000);
+
             }
 
         }else{
@@ -445,7 +506,7 @@ public class Principal extends AppCompatActivity
         }).start();
     }
 
-    private void AlertNoGps() {
+    private void AlertNoGPSActivo() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
          builder.setMessage("El sistema GPS estan desactivados")
                 .setNegativeButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -458,9 +519,25 @@ public class Principal extends AppCompatActivity
     }
 
 
-    private void AlertNoRed() {
+    private void AlertNoGPS() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-           builder.setMessage("ACTIVAR RED Y/O GPS")
+           builder.setMessage("ACTIVAR GPS")
+                .setNegativeButton("Aceptar", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                    }
+                });
+        alert = builder.create();
+        alert.show();
+
+        lblLatitudLongitud.setText("");
+        lblDireccion.setText("");
+    }
+
+
+    private void AlertNoRedActivo() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("ACTIVAR RED")
                 .setNegativeButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         dialog.cancel();
@@ -553,7 +630,15 @@ public class Principal extends AppCompatActivity
                 //Toast.makeText(this, "PERMISO MENSAJE TEXTO", Toast.LENGTH_SHORT).show();
               //  sw=1;
                 //msn(telefono, mensajeauxilio, NombrePropio + " (" + Alias + ")");
+
+
+                this.permisosLlamadas();
+
             } else {
+
+                this.permisosLlamadas();
+
+
                 Toast.makeText(this, "Sorry!!! Permission Denied", Toast.LENGTH_SHORT).show();
             }
         }
@@ -562,8 +647,22 @@ public class Principal extends AppCompatActivity
 
     }
 
+    private void permisosLlamadas() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // Toast.makeText(this, "SI NECESITO PERMISOS LLAMADA", Toast.LENGTH_SHORT).show();
+            requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
+        } else {
+            //Toast.makeText(this, "NO NECESITO PERMISOS LLAMADA", Toast.LENGTH_SHORT).show();
 
+        }
+    }
 
+    public void dialogoActivarGPS() {
+
+        Intent callGPSSettingIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivity(callGPSSettingIntent);
+
+    }
 
 
 
