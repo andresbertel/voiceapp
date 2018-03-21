@@ -52,6 +52,7 @@ public class MisDatos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 GuardarMisDatos(MiNombre.getText().toString(),MiAlias.getText().toString(),Policia.getText().toString());
+
             }
         });
 
@@ -90,6 +91,9 @@ public class MisDatos extends AppCompatActivity {
                                }else{
                                     MBD.modificarMISDATOS(1,Nombre,Alias,Policia);
                          }
+
+          Intent VentanaPrincipal = new Intent(getApplicationContext(), Principal.class);
+          startActivity(VentanaPrincipal);
 
       }
 
@@ -138,11 +142,11 @@ public class MisDatos extends AppCompatActivity {
                 startActivity(ventanamisdatoss);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
-            case R.id.imisagresor:
+            /*case R.id.imisagresor:
                 Intent VentanaAgresores = new Intent(getApplicationContext(), MisAgresores.class);
                 startActivity(VentanaAgresores);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }

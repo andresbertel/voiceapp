@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appdiccion.andresbertel.voiceapp_.ListaContactos.ListaContactosPrincipal;
+
+import java.util.regex.Pattern;
 
 import static com.appdiccion.andresbertel.voiceapp_.R.id.btnactualizar;
 
@@ -49,11 +52,21 @@ public class actualizarContacto extends AppCompatActivity {
        BtnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               MBD.modificarCONTACTO(idc,TNombre.getText().toString(),Tcelular.getText().toString(),TEmail.getText().toString());
-                Toast.makeText(getApplicationContext(),"Contacto Actualizado",Toast.LENGTH_SHORT).show();
 
-                Intent Irlistacontactos=new Intent(getApplicationContext(), ListaContactosPrincipal.class);
-                startActivity(Irlistacontactos);
+                if (!validarEmail(TEmail.getText().toString())) {
+                    TEmail.setError("Email no válido");
+
+                } else {
+                    
+                    MBD.modificarCONTACTO(idc,TNombre.getText().toString(),Tcelular.getText().toString(),TEmail.getText().toString());
+                    Toast.makeText(getApplicationContext(),"Contacto Actualizado",Toast.LENGTH_SHORT).show();
+
+                    Intent Irlistacontactos=new Intent(getApplicationContext(), ListaContactosPrincipal.class);
+                    startActivity(Irlistacontactos);
+
+                }
+
+
 
             }
         });
@@ -62,6 +75,11 @@ public class actualizarContacto extends AppCompatActivity {
 
 
 
+    }
+
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

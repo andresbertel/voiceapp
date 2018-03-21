@@ -103,7 +103,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
                 new AlertDialog.Builder(RegistroUsuario.this)
                         .setTitle("RESULTADO")
-                        .setMessage("Indice de violencia segun el puntaje Obtenido \n Resultado "+  nivel+" \n   "+retorno)
+                        .setMessage("Indice de violencia según el puntaje obtenido \n Resultado "+  nivel+" \n   "+retorno)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 

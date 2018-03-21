@@ -77,11 +77,11 @@ public class IViolenciaPatrimonial extends AppCompatActivity {
                 startActivity(ventanamisdatoss);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
-            case R.id.imisagresor:
+           /* case R.id.imisagresor:
                 Intent VentanaAgresores = new Intent(getApplicationContext(), MisAgresores.class);
                 startActivity(VentanaAgresores);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }
