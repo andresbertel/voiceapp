@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.appdiccion.andresbertel.voiceapp_.Condiciones;
 import com.appdiccion.andresbertel.voiceapp_.Contactos;
 import com.appdiccion.andresbertel.voiceapp_.MiBaseDatos;
 import com.appdiccion.andresbertel.voiceapp_.MisAgresores;
@@ -118,6 +119,11 @@ public class ListaContactosPrincipal extends AppCompatActivity {
             case R.id.imisdatos:
                 Intent ventanamisdatoss = new Intent(getApplicationContext(), MisDatos.class);
                 startActivity(ventanamisdatoss);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.termiCondi:
+                Intent ventanaCondiciones = new Intent(getApplicationContext(), Condiciones.class);
+                startActivity(ventanaCondiciones);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
             /*case R.id.imisagresor:

@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="0.16"
-                android:hint="LATITTUD - LONGITUD"
+                android:hint="LATITUD - LONGITUD"
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@color/colorAccent"
                 android:textSize="12sp"

@@ -179,6 +179,11 @@ public class RegistroCuestionario extends AppCompatActivity {
                 startActivity(ventanamisdatoss);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
+            case R.id.termiCondi:
+                Intent ventanaCondiciones = new Intent(getApplicationContext(), Condiciones.class);
+                startActivity(ventanaCondiciones);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

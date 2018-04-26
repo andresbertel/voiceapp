@@ -33,12 +33,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:hint="NOMBRE"
+            android:hint="NOMBRE*"
             android:weightSum="1">
 
             <EditText
                 android:id="@+id/ETnombre"
                 android:layout_width="335dp"
+
                 android:layout_height="match_parent"
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
@@ -54,7 +55,7 @@
                 android:id="@+id/ETcelular"
                 android:layout_width="334dp"
                 android:layout_height="match_parent"
-                android:hint="CELULAR"
+                android:hint="CELULAR*"
                 android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
@@ -63,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:hint="EMAIL"
+            android:hint="EMAIL*"
             android:weightSum="1">
 
             <EditText

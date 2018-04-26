@@ -34,14 +34,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:hint="MI NOMBRE"
+            android:hint="MI NOMBRE*"
             android:weightSum="1">
 
             <EditText
                 android:id="@+id/txtminombre"
                 android:layout_width="335dp"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName" />
+
+                android:inputType="textPersonName|text" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -55,7 +56,7 @@
                 android:id="@+id/txtalias"
                 android:layout_width="334dp"
                 android:layout_height="match_parent"
-                android:hint="ALIAS"
+                android:hint="ALIAS*"
                 android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
@@ -64,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:hint="TELEFONO POLICIA"
+            android:hint="TELEFONO POLICIA*"
             android:weightSum="1">
 
             <EditText

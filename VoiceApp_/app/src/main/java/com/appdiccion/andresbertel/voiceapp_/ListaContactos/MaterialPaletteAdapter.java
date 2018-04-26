@@ -126,7 +126,7 @@ public class MaterialPaletteAdapter extends RecyclerView.Adapter<MaterialPalette
 
 
         public void Eliminar(View view){
-            Toast.makeText(view.getContext(),"Entre",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(view.getContext(),"Entre",Toast.LENGTH_SHORT).show();
 
 
 

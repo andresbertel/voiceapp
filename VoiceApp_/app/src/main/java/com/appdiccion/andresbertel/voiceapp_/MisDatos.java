@@ -18,6 +18,9 @@ import android.widget.ToggleButton;
 
 import com.appdiccion.andresbertel.voiceapp_.ListaContactos.ListaContactosPrincipal;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MisDatos extends AppCompatActivity {
 
     MiBaseDatos MBD;
@@ -51,8 +54,15 @@ public class MisDatos extends AppCompatActivity {
         btGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GuardarMisDatos(MiNombre.getText().toString(),MiAlias.getText().toString(),Policia.getText().toString());
+                Pattern ps = Pattern.compile("^[a-zA-Z ]+$");
+                Matcher ms = ps.matcher(MiNombre.getText().toString());
+                boolean bs = ms.matches();
+                if (bs == false) {
+                    MiNombre.setError("Nombre no valido");
 
+                }else {
+                    GuardarMisDatos(MiNombre.getText().toString(), MiAlias.getText().toString(), Policia.getText().toString());
+                }
             }
         });
 
@@ -80,7 +90,7 @@ public class MisDatos extends AppCompatActivity {
 
       if(verificar(Nombre,Alias,Policia)==false){
 
-          Toast.makeText(getApplicationContext(),"Datos Vacios", Toast.LENGTH_SHORT).show();
+          Toast.makeText(getApplicationContext(),"Datos vacíos", Toast.LENGTH_SHORT).show();
 
                 }else{
                       Toast.makeText(getApplicationContext(),"Datos Guardados", Toast.LENGTH_SHORT).show();
@@ -140,6 +150,11 @@ public class MisDatos extends AppCompatActivity {
             case R.id.imisdatos:
                 Intent ventanamisdatoss = new Intent(getApplicationContext(), MisDatos.class);
                 startActivity(ventanamisdatoss);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.termiCondi:
+                Intent ventanaCondiciones = new Intent(getApplicationContext(), Condiciones.class);
+                startActivity(ventanaCondiciones);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
             /*case R.id.imisagresor:

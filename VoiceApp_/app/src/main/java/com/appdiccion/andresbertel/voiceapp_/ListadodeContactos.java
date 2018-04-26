@@ -116,6 +116,11 @@ public class ListadodeContactos extends AppCompatActivity {
                 startActivity(ventanamisdatoss);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
+            case R.id.termiCondi:
+                Intent ventanaCondiciones = new Intent(getApplicationContext(), Condiciones.class);
+                startActivity(ventanaCondiciones);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
           /*  case R.id.imisagresor:
                 Intent VentanaAgresores = new Intent(getApplicationContext(), MisAgresores.class);
                 startActivity(VentanaAgresores);

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.appdiccion.andresbertel.voiceapp_.ListaContactos.ListaContactosPrincipal;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class intefaz_contacto extends AppCompatActivity {
@@ -54,7 +55,7 @@ public class intefaz_contacto extends AppCompatActivity {
             public void onClick(View view) {
 
             if(nombre.getText().toString().equals(null)||celulr.getText().toString().equals(null)||email.getText().toString().equals(null)||nombre.getText().toString().equals("")||celulr.getText().toString().equals("")||email.getText().toString().equals("")){
-                Toast.makeText(getApplicationContext(), "Campos Vacios", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Campos Vacíos", Toast.LENGTH_LONG).show();
             }else {
 
 
@@ -63,19 +64,53 @@ public class intefaz_contacto extends AppCompatActivity {
 
                 } else {
 
-                    MDB.insertarCONTACTO(nombre.getText().toString(), celulr.getText().toString(), email.getText().toString());
+                    Pattern ps = Pattern.compile("^[a-zA-Z ]+$");
+                    Matcher ms = ps.matcher(nombre.getText().toString());
+                    boolean bs = ms.matches();
+                    if (bs == false) {
+                        nombre.setError("Nombre no valido");
 
-                    celulr.setText("");
-                    email.setText("");
-                    nombre.setText("");
-                    nombre.requestFocus();
+                    }else {
 
-                    Toast.makeText(getApplicationContext(), "Contacto Agregado", Toast.LENGTH_LONG).show();
+                        nombre.setError(null);
+
+
+
+                            if( celulr.getText().toString().equals("0")){
+
+                                celulr.setError("Celular no válido");
+
+                            }else {
+
+
+                                if ( celulr.getText().toString().trim().length() < 8) {
+
+                                    celulr.setError("Minimo 8 digitos");
+                                } else {
+                                    celulr.setError(null);
+                                    MDB.insertarCONTACTO(nombre.getText().toString(), celulr.getText().toString(), email.getText().toString());
+
+                                    celulr.setText("");
+                                    email.setText("");
+                                    nombre.setText("");
+                                    nombre.requestFocus();
+
+                                    Toast.makeText(getApplicationContext(), "Contacto Agregado", Toast.LENGTH_LONG).show();
+                                }
+
+
+
+                            }
+
+                        }
+
+
+                    }
                 }
             }
 
 
-            }
+
         });
 
     }
@@ -122,6 +157,11 @@ public class intefaz_contacto extends AppCompatActivity {
                 startActivity(VentanaAgresores);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;*/
+            case R.id.termiCondi:
+                Intent ventanaCondiciones = new Intent(getApplicationContext(), Condiciones.class);
+                startActivity(ventanaCondiciones);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

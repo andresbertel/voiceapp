@@ -82,7 +82,7 @@ public class RegistroUsuario extends AppCompatActivity {
                 }
 
                 if(nivel<=5){
-                    retorno="Esta Fuera del Rango";
+                    retorno="Está fuera del rango";
                 }
 
                 if(nivel>=6 && nivel<=15){
@@ -98,12 +98,12 @@ public class RegistroUsuario extends AppCompatActivity {
                 }
 
                 if(nivel>=41 ){
-                    retorno="Relación Violenta: Es URGENTE que tomes medidas de seguridad y que recibas inmediatamente ayuda especializada, tu vida está en peligro, tu salud física y/o mental puede quedar severamente dañada. !DENUNCIA INMEDIATAMENTE!";
+                    retorno="Relación Violenta: Es URGENTE que tomes medidas de seguridad y que recibas inmediatamente ayuda especializada, tu vida está en peligro, tu salud física y/o mental puede quedar severamente dañada. ¡DENUNCIA INMEDIATAMENTE!";
                 }
 
                 new AlertDialog.Builder(RegistroUsuario.this)
                         .setTitle("RESULTADO")
-                        .setMessage("Indice de violencia según el puntaje obtenido \n Resultado "+  nivel+" \n   "+retorno)
+                        .setMessage("Índice de violencia según el puntaje obtenido \n Resultado "+  nivel+" \n   "+retorno)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
@@ -136,17 +136,17 @@ public class RegistroUsuario extends AppCompatActivity {
 
     private void llenarPreguntas() {
         listaPregunta.add(new PreguntasVo("Cuando se dirige a ti ¿te llama por un apodo que te desagrade y/o con groserías? ", 1, 112,0));
-        listaPregunta.add(new PreguntasVo("Te ha dicho que estás con alguien más, o que tus amigos quieren estar contigo? ", 2, 113,0));
+        listaPregunta.add(new PreguntasVo("¿Te ha dicho que estás con alguien más, o que sus amigos quieren estar contigo? ", 2, 113,0));
         listaPregunta.add(new PreguntasVo("¿Te dice que tiene otras mujeres y te compara con tus ex parejas? ", 3, 114,0));
         listaPregunta.add(new PreguntasVo("¿Todo el tiempo quiere saber qué haces y con quién estas?", 4, 115,0));
         listaPregunta.add(new PreguntasVo("¿Te critica, se burla de tu cuerpo y exagera de tus defectos en público o en privado? ", 5, 116,0));
         listaPregunta.add(new PreguntasVo("Cuando estás con tu pareja ¿sientes tensión y piensas que hagas lo que hagas se molestará?", 6, 119,0));
-        listaPregunta.add(new PreguntasVo("Para decidir lo que harán cuando salen ¿Ignora tu opinión?", 6, 119,0));
+        listaPregunta.add(new PreguntasVo("Para decidir lo que harán cuando salen ¿ignora tu opinión?", 7, 119,0));
         listaPregunta.add(new PreguntasVo("Cuando hablan ¿te sientes mal porque sólo te habla de sexo y te pregunta si tuviste relaciones sexuales con otras personas?", 8, 119,0));
         listaPregunta.add(new PreguntasVo("¿Sientes que tu pareja constantemente te está controlando por amor?", 9, 119,0));
         listaPregunta.add(new PreguntasVo("¿Controla tus redes sociales y el uso de tu movil?", 10, 119,0));
-        listaPregunta.add(new PreguntasVo("¿Te riculiza, te descalifica y te anula tu autoestima haciendote sentir que no eres buena para nada?", 11, 119,0));
-        listaPregunta.add(new PreguntasVo("Si has cedido a sus deseos sexuales ¿sientes que ha sido por amor por temor, por complacer o presión?", 12, 119,0));
+        listaPregunta.add(new PreguntasVo("¿Te ridiculiza, te descalifica y te anula tu autoestima haciendote sentir que no eres buena para nada?", 11, 119,0));
+        listaPregunta.add(new PreguntasVo("Si has cedido a sus deseos sexuales ¿sientes que ha sido por amor, por temor, por complacer o presión?", 12, 119,0));
         listaPregunta.add(new PreguntasVo("Si tienen relaciones sexuales ¿Te impide o condiciona el uso de métodos anticonceptivos?", 13, 119,0));
         listaPregunta.add(new PreguntasVo("¿Te ha obligado a ver pornografía y/o a tener prácticas sexuales que te desagraden?", 14, 119,0));
         listaPregunta.add(new PreguntasVo("¿Te ha presionado u obligado a consumir droga?", 15, 119,0));
@@ -190,6 +190,11 @@ public class RegistroUsuario extends AppCompatActivity {
             case R.id.imisdatos:
                 Intent ventanamisdatoss = new Intent(getApplicationContext(), MisDatos.class);
                 startActivity(ventanamisdatoss);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.termiCondi:
+                Intent ventanaCondiciones = new Intent(getApplicationContext(), Condiciones.class);
+                startActivity(ventanaCondiciones);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
             default:

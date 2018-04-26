@@ -42,12 +42,15 @@ public class actualizarContacto extends AppCompatActivity {
 
         final TextView TNombre=(TextView)findViewById(R.id.ETnombre);
         final TextView Tcelular=(TextView)findViewById(R.id.ETcelular);
-       final TextView TEmail=(TextView)findViewById(R.id.ETemail);
+        final TextView TEmail=(TextView)findViewById(R.id.ETemail);
+
         ImageButton BtnActualizar=(ImageButton)findViewById(R.id.bntactualizar1);
 
         TNombre.setText(nombres);
         Tcelular.setText(celular);
         TEmail.setText(email);
+
+
 
        BtnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,12 +60,31 @@ public class actualizarContacto extends AppCompatActivity {
                     TEmail.setError("Email no válido");
 
                 } else {
-                    
-                    MBD.modificarCONTACTO(idc,TNombre.getText().toString(),Tcelular.getText().toString(),TEmail.getText().toString());
-                    Toast.makeText(getApplicationContext(),"Contacto Actualizado",Toast.LENGTH_SHORT).show();
 
-                    Intent Irlistacontactos=new Intent(getApplicationContext(), ListaContactosPrincipal.class);
-                    startActivity(Irlistacontactos);
+                    if( Tcelular.getText().toString().equals("0")){
+
+                        Tcelular.setError("Celular no válido");
+
+                    }else {
+
+
+
+
+                                    if ( Tcelular.getText().toString().trim().length() < 8) {
+
+                                        Tcelular.setError("Minimo 8 digitos");
+                                    } else {
+                                        Tcelular.setError(null);
+                                        MBD.modificarCONTACTO(idc, TNombre.getText().toString(), Tcelular.getText().toString(), TEmail.getText().toString());
+                                        Toast.makeText(getApplicationContext(), "Contacto Actualizado", Toast.LENGTH_SHORT).show();
+
+                                        Intent Irlistacontactos = new Intent(getApplicationContext(), ListaContactosPrincipal.class);
+                                        startActivity(Irlistacontactos);
+                                    }
+
+
+
+                    }
 
                 }
 
@@ -111,6 +133,11 @@ public class actualizarContacto extends AppCompatActivity {
             case R.id.imisdatos:
                 Intent ventanamisdatoss = new Intent(getApplicationContext(), MisDatos.class);
                 startActivity(ventanamisdatoss);
+                //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.termiCondi:
+                Intent ventanaCondiciones = new Intent(getApplicationContext(), Condiciones.class);
+                startActivity(ventanaCondiciones);
                 //Toast.makeText(this, "mis datos", Toast.LENGTH_LONG).show();
                 return true;
             default:
